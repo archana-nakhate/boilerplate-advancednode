@@ -67,6 +67,12 @@ passport.deserializeUser((id, done) => {
     res.render('index', { title: e, message: 'Unable to connect to database' });
   });
 });
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+};
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
