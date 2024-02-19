@@ -67,6 +67,7 @@ passport.deserializeUser((id, done) => {
     res.render('index', { title: e, message: 'Unable to connect to database' });
   });
 });
+
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
